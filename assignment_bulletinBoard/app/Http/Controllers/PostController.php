@@ -35,8 +35,9 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Requests\PostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request, Post $post)
+    public function store(PostRequest $request)
     {
+        $post = new POST;
         $post->fill($request->all());
         $post->user_id = $request->user()->id;
         $post->save();
