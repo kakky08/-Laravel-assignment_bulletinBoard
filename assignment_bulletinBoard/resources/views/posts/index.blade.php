@@ -28,11 +28,17 @@
                             </li>
                             @endif
                             <li>
-                                <button type="button" class="btn m-0 p-1 shadow-none">
-                                    <i class="fas fa-heart mr-1 like-btn"></i>
-                                </button>
+                                @if ($post->is_like())
+                                    <a href="{{ route('posts.unlike', $post->id) }}" class="btn m-0 p-1 shadow-none">
+                                        <i class="fas fa-heart mr-1 like-btn"></i>
+                                    </a>
+                                @else
+                                    <a href="{{ route('posts.like', $post->id) }}" class="btn m-0 p-1 shadow-none">
+                                        <i class="far fa-heart mr-1"></i>
+                                    </a>
+                                @endif
                             </li>
-                            <li><p class="post-text">10</p></li>
+                            <li><p class="post-text">{{ $post->likes->count() }}</p></li>
                         </ul>
                     </div>
                 </div>
