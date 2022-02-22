@@ -6,3 +6,27 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.card-box{
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.card{
+    margin: 2rem 0;
+    padding: 1rem
+}
+
+
+.post-text{
+    margin-bottom: 0;
+    line-height: 2rem;
+}
+
+.card-footer{
+    list-style: none;
+}
+
+.card-footer li:not(:last-child){
+    margin-right: 0.5rem;
+}
