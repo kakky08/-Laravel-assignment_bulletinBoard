@@ -20,5 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/posts', 'PostController')->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])->middleware('auth');
-Route::get('/posts/like/{id}', 'PostController@like')->name('posts.like');
-Route::get('/posts/unlike/{id}', 'PostController@unlike')->name('posts.unlike');
+Route::post('/posts/like/{id}', 'PostController@like')->name('posts.like');
+Route::delete('/posts/unlike/{id}', 'PostController@unlike')->name('posts.unlike');
