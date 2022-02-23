@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
+use App\Like;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -83,4 +85,29 @@ class PostController extends Controller
         $post = Post::find($id)->delete();
         return redirect()->route('posts.index');
     }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function like($id)
+    {
+        $like = new Like;
+        $like->user_id = Auth::id();
+        $like->post_id = $id;
+        $like->save();
+        return redirect()->route('posts.index');
+    }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function unlike($id)
+    {
+        $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
+        $like->delete();
+        return redirect()->route('posts.index');
+    }
+
 }
